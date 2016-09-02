@@ -1,0 +1,49 @@
+<div class="panel panel-primary" *ngIf="product">
+	<div class="panel-heading">
+		{{product.productName}}
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-6">
+				<img [src]="product.imageUrl" 
+					[title]="product.productName" 
+					[alt]="product.productName"
+					[style.width.px]="imageWidth" 
+					class="img-responsive center-block">
+			</div>
+			<div class="col-md-6">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Product</th>
+							<td>{{ product.productName }}</td>
+						</tr>
+						<tr>
+							<th>Code</th>
+							<td>{{ product.productCode | lowercase }}</td>
+						</tr>
+						<tr>
+							<th>Available</th>
+							<td>{{ product.releaseDate }}</td>
+						</tr>
+						<tr>
+							<th>Price</th>
+							<td>{{ product.price | currency:'USD' }}</td>
+						</tr>
+						<tr>
+							<th>5 Star Rating</th>
+							<td>
+								<ai-star [rating]="product.starRating" (ratingClicked)="onRatingClicked($event)"></ai-star>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<a class="btn btn-default" (click)="onBack()">
+			<i class="glyphicon glyphicon-chevron-left"></i> Back
+		</a>
+	</div>
+</div>
